@@ -3,9 +3,9 @@ package com.example.pamplonapark.internal_code
 import android.os.Build
 import com.fasterxml.jackson.databind.ObjectMapper
 import java.net.URI
-import java.net.http.HttpClient
+/*import java.net.http.HttpClient
 import java.net.http.HttpRequest
-import java.net.http.HttpResponse
+import java.net.http.HttpResponse*/
 
 class Auth
 {
@@ -19,11 +19,11 @@ class Auth
         val requestBody: String = objectMapper
             .writeValueAsString(values)
 
-        val client = HttpClient.newBuilder().build();
+        /*val client = HttpClient.newBuilder().build();
         val request = HttpRequest.newBuilder()
             .uri(URI.create("https://httpbin.org/post"))
             .POST(HttpRequest.BodyPublishers.ofString(requestBody))
             .build()
-        val response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        val response = client.send(request, HttpResponse.BodyHandlers.ofString());*/
     }
 }
