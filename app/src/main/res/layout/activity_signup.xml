@@ -24,8 +24,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Sign Up"
+            android:fontFamily="sans-serif-medium"
             android:textAlignment="center"
-            android:textSize="40dp" />
+            android:textSize="40dp"
+            android:layout_marginBottom="50dp"/>
 
         <EditText
             android:id="@+id/editTextNombre"
@@ -34,7 +36,8 @@
             android:layout_centerHorizontal="true"
             android:hint="Nombre completo"
             android:inputType="text"
-            android:layout_below="@+id/signupText"/>
+            android:layout_below="@+id/signupText"
+            android:layout_marginBottom="20dp"/>
 
         <EditText
             android:id="@+id/editTextEmail"
@@ -43,7 +46,8 @@
             android:layout_centerHorizontal="true"
             android:hint="Correo electrónico"
             android:inputType="textEmailAddress"
-            android:layout_below="@+id/editTextNombre"/>
+            android:layout_below="@+id/editTextNombre"
+            android:layout_marginBottom="20dp"/>
 
         <EditText
             android:id="@+id/editTextPhone"
@@ -52,7 +56,8 @@
             android:layout_centerHorizontal="true"
             android:hint="Número de teléfono"
             android:inputType="phone"
-            android:layout_below="@+id/editTextEmail"/>
+            android:layout_below="@+id/editTextEmail"
+            android:layout_marginBottom="20dp"/>
 
         <EditText
             android:id="@+id/editTextPassword"
@@ -61,7 +66,8 @@
             android:layout_centerHorizontal="true"
             android:hint="Contraseña"
             android:inputType="textPassword"
-            android:layout_below="@+id/editTextPhone"/>
+            android:layout_below="@+id/editTextPhone"
+            android:layout_marginBottom="20dp"/>
 
         <EditText
             android:id="@+id/editTextPwdConfirmation"
@@ -70,7 +76,8 @@
             android:layout_centerHorizontal="true"
             android:hint="Confirmar contraseña"
             android:inputType="textPassword"
-            android:layout_below="@+id/editTextPassword"/>
+            android:layout_below="@+id/editTextPassword"
+            android:layout_marginBottom="30dp"/>
 
         <Button
             android:id="@+id/btnSignup"
