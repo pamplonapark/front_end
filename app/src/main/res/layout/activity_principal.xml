@@ -10,45 +10,37 @@
     tools:context="com.example.pamplonapark.PrincipalActivity">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_centerInParent="true">
+        android:layout_width="325dp"
+        android:layout_height="527dp"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/bienvenida"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bienvenido a"
-            android:textSize="40dp"
-            android:fontFamily="sans-serif-medium"
-            android:layout_centerHorizontal="true"/>
-
-        <ImageView
-            android:id="@+id/nombreApp"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
             android:layout_centerHorizontal="true"
-            android:src="@tools:sample/avatars"
-            android:layout_below="@+id/bienvenida"
-            android:layout_marginTop="50dp"/>
+            android:fontFamily="sans-serif-medium"
+            android:text="Bienvenido a"
+            android:textSize="40dp" />
 
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="318dp"
+            android:layout_height="377dp"
+            android:layout_below="@+id/bienvenida"
             android:layout_centerHorizontal="true"
-            android:src="@tools:sample/avatars"
-            android:layout_below="@+id/nombreApp"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:src="@drawable/logoTexto" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_below="@+id/logo"
-            android:layout_marginTop="40dp"
-            android:layout_centerHorizontal="true">
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp">
+
 
             <Button
                 android:id="@+id/button"
