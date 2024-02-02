@@ -25,6 +25,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginBottom="50dp"
             android:text="LOG IN"
+            android:fontFamily="sans-serif-medium"
             android:textAlignment="center"
             android:textSize="40dp"
             android:layout_centerHorizontal="true"/>
