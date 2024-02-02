@@ -2,86 +2,63 @@ package com.example.pamplonapark.internal_code
 
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
-import java.security.Key
 import java.security.KeyStore
-import java.security.SecureRandom
 import javax.crypto.Cipher
 import javax.crypto.KeyGenerator
-import javax.crypto.spec.SecretKeySpec
-import java.util.Base64
 import javax.crypto.SecretKey
-import javax.crypto.spec.GCMParameterSpec
 
 class Crypto
 {
-    fun generateAESKey(): Key
+    private val key = "aes_numeric_value"
+
+    init
     {
-        val keyGenerator = KeyGenerator.getInstance("AES")
-        keyGenerator.init(256, SecureRandom())
-        return keyGenerator.generateKey()
+        generateAESKey()
     }
 
-    fun encrypt(text: String, key: Key): String {
-        val cipher = Cipher.getInstance("AES")
-        cipher.init(Cipher.ENCRYPT_MODE, key)
-        val encryptedBytes = cipher.doFinal(text.toByteArray())
-        return Base64.getEncoder().encodeToString(encryptedBytes)
+    /** Creation of the key (and inserting it in KeyStore)
+    *
+    * @return Key : Key generated or NULL if already generated
+    * */
+    private fun generateAESKey(): SecretKey?
+    {
+        if(this.getSecretKey() == null)
+        {
+            val keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore")
+            val keyGenParameterSpec = KeyGenParameterSpec.Builder(key, KeyProperties.PURPOSE_ENCRYPT)
+                .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
+                .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
+                .build()
+
+            keyGenerator.init(keyGenParameterSpec)
+            return keyGenerator.generateKey()
+        }
+
+        return null;
     }
 
-
-
-    fun main() {
-        val originalText = "Hello, AES-256 encryption!"
-
-        // Generate a random AES key
-        val aesKey = generateAESKey()
-
-        // Encrypt the text
-        val encryptedText = encrypt(originalText, aesKey)
-        println("Encrypted Text: $encryptedText")
-
-        // Decrypt the text
-        val decryptedText = decrypt(encryptedText, aesKey)
-        println("Decrypted Text: $decryptedText")
+    /**
+     * Encryption of the data
+     *
+     * @param password as ByteArray
+     * @return ByteArray of data encrypted
+     * */
+    fun encrypt(password: ByteArray): ByteArray
+    {
+        val cipher = Cipher.getInstance("AES/GCM/NoPadding")
+        cipher.init(Cipher.ENCRYPT_MODE, getSecretKey())
+        return cipher.doFinal(password)
     }
 
-    /*private val keystoreAlias = "MyKeystoreAlias"
-
-    init {
-        createSecretKey()
-    }
-
-    private fun createSecretKey() {
-        val keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore")
-
-        val keyGenParameterSpec = KeyGenParameterSpec.Builder(
-            keystoreAlias,
-            KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
-        )
-            .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
-            .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
-            .build()
-
-        keyGenerator.init(keyGenParameterSpec)
-        keyGenerator.generateKey()
-    }
-
-    fun getSecretKey(): SecretKey {
+    /**
+     * Get the secret Key
+     *
+     * @return SecretKey : The key stored in KeyStore or NULL if no key exists
+     * */
+    private fun getSecretKey(): SecretKey {
         val keyStore = KeyStore.getInstance("AndroidKeyStore")
         keyStore.load(null)
 
-        return keyStore.getKey(keystoreAlias, null) as SecretKey
+        return keyStore.getKey(key, null) as SecretKey
     }
-
-    fun encryptData(data: ByteArray): ByteArray {
-        val cipher = Cipher.getInstance("AES/GCM/NoPadding")
-        cipher.init(Cipher.ENCRYPT_MODE, getSecretKey())
-        return cipher.doFinal(data)
-    }
-
-    fun decryptData(encryptedData: ByteArray, iv: ByteArray): ByteArray {
-        val cipher = Cipher.getInstance("AES/GCM/NoPadding")
-        val spec = GCMParameterSpec(128, iv)
-        cipher.init(Cipher.DECRYPT_MODE, getSecretKey(), spec)
-        r*/
 }

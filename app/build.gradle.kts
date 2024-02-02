@@ -44,11 +44,7 @@ dependencies {
     kapt("androidx.room:room-compiler:2.6.1")
 
     /* HTTP Requests*/
-    implementation ("io.ktor:ktor-client-core:1.7.0")
-    implementation ("io.ktor:ktor-client-json:1.7.0")
-    implementation ("io.ktor:ktor-client-serialization:1.7.0")
-    implementation ("io.ktor:ktor-client-android:1.7.0")
-    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("org.danilopianini:khttp:1.4.3")
 
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
