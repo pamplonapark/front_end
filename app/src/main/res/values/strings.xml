@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">PamplonaPark</string>
-    <string name="no_tengo_cuenta">No tengo cuenta</string>
+    <string name="registrarme">Registrarme</string>
 </resources>

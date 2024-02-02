@@ -1,57 +1,35 @@
 package com.example.pamplonapark.database
-
 import android.content.Context
-import android.database.SQLException
-import android.database.sqlite.SQLiteDatabase
-import android.database.sqlite.SQLiteOpenHelper
-import android.util.Log
+import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
+import com.example.pamplonapark.dao.UserDAO
+import com.example.pamplonapark.dataModels.User
 
-class DatabaseManager(context: Context) : SQLiteOpenHelper(context, "pamplonapark.db", null, 1)
-{
-    override fun onCreate(db: SQLiteDatabase)
-    {
-        try
+@Database(entities = [User::class], version = 1)
+abstract class DatabaseManager : RoomDatabase() {
+    abstract fun userDao(): UserDAO
+
+    companion object{
+        private const val database_name = "pamplonapark_db";
+
+        @Volatile
+        private var INSTANCE : DatabaseManager? = null;
+
+        fun getInstance(context: Context) : DatabaseManager
         {
-            db.execSQL("CREATE TABLE IF NOT EXISTS Login_User_PamplonaPark(" +
-                    "username TEXT PRIMARY KEY," +
-                    "token TEXT);");
-        }
-        catch (err: SQLException)
-        {
-            Log.e("DatabaseManager", "Error creating table: " + err.message);
-        }
-    }
+            synchronized(this)
+            {
+                var instance = INSTANCE;
 
-    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int)
-    {
-        try
-        {
-            db.execSQL("DROP TABLE IF EXISTS Login_User_PamplonaPark;");
-            onCreate(db);
-        }
-        catch (err : SQLException)
-        {
-            Log.e("DatabaseManager", "Error creating table: " + err.message);
+                if(instance == null)
+                {
+                    instance = Room.databaseBuilder(context.applicationContext, DatabaseManager::class.java, database_name).build();
+                    INSTANCE = instance;
+                }
+
+                return instance;
+            }
         }
     }
-
-    /*fun insert(params : ContentValues)
-    {
-        this.writableDatabase.insert("Users", null, params);
-    }
-
-    fun select(sql : String, params : Array<String>) : Cursor
-    {
-        return this.readableDatabase.rawQuery(sql, params);
-    }
-
-    fun update(params : ContentValues, pk_old_user : String)
-    {
-        this.writableDatabase.update("Users", params, "dni = ?", arrayOf(pk_old_user));
-    }
-
-    fun delete(pk_old_user : String)
-    {
-        this.writableDatabase.delete("Users", "dni = ?", arrayOf(pk_old_user));
-    }*/
 }
