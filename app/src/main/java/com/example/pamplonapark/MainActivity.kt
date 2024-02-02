@@ -13,13 +13,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
         /* Room init */
         database = Room.databaseBuilder(
             applicationContext,
             DatabaseManager::class.java, "pamplonapark_db"
         ).build();
+
+
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
     }
 }
