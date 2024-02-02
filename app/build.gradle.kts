@@ -50,9 +50,6 @@ dependencies {
     implementation ("io.ktor:ktor-client-android:1.7.0")
     implementation("androidx.core:core-ktx:1.12.0")
 
-    /* Bcrypt (crypto)*/
-    implementation("at.favre.lib:bcrypt:0.11.0")
-
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
