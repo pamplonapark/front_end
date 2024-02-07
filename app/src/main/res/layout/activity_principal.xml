@@ -31,7 +31,7 @@
             android:layout_below="@+id/bienvenida"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
-            android:src="@drawable/logoTexto" />
+            android:src="@drawable/logobueno" />
 
         <LinearLayout
             android:layout_width="wrap_content"
