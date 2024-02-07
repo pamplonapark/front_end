@@ -1,10 +1,12 @@
 # Proyecto-PMDM-DEIN-PSEP
-## Technologies: 
-### Databases: 
+## Technologies:
+- Kotlin
+## Databases: 
 - SQLite
 
-### Frameworks/libraries: 
-- 
+## Frameworks/libraries: 
+- SQLiteOpenHelper
+- jackson-module-kotlin
 
 ## How to start: 
-Download the APK of the project, located in ...
+Download the APK of the project and install it
