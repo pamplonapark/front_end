@@ -30,18 +30,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        /* Button navigation */
         botIniciarSesion = findViewById(R.id.iniciarSesion)
         botIniciarSesion.setOnClickListener {
-
-            val cambio =  Intent(this, LoginActivity::class.java)
-            startActivity(cambio)
+            startActivity(Intent(this, LoginActivity::class.java))
         }
 
         botRegistrarse = findViewById(R.id.registrarse)
         botRegistrarse.setOnClickListener {
-
-            val cambio =  Intent(this, SignupActivity::class.java)
-            startActivity(cambio)
+            startActivity(Intent(this, SignupActivity::class.java))
         }
     }
 }
