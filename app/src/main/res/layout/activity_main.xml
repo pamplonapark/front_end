@@ -43,7 +43,7 @@
 
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/iniciarSesion"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
@@ -51,7 +51,7 @@
                 android:text="Iniciar sesión" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/registrarse"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
