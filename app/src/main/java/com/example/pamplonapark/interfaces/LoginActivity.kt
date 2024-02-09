@@ -3,6 +3,8 @@ package com.example.pamplonapark.interfaces
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.Button
 import androidx.room.Room
 import com.example.pamplonapark.MainActivity
@@ -17,16 +19,25 @@ class LoginActivity : AppCompatActivity() {
 
         botRegistrarse = findViewById(R.id.btnRegister)
         botRegistrarse.setOnClickListener {
-            startActivity(Intent(this, SignupActivity::class.java))
-            this.finish()
+            this.finish1()
         }
     }
 
-
-    override fun onDestroy() {
-        super.onDestroy()
-
+    override fun finish() {
         startActivity(Intent(this, MainActivity::class.java))
+        val handler = Handler(Looper.getMainLooper())
+        handler.postDelayed({
+            super.finish()
+        }, 1500)
+
+    }
+    private fun finish1() {
+        startActivity(Intent(this, SignupActivity::class.java))
+        val handler = Handler(Looper.getMainLooper())
+        handler.postDelayed({
+            super.finish()
+        }, 1500)
+
     }
 
 }
