@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var botIniciarSesion: Button
     private lateinit var botRegistrarse: Button
 
+
     /* Static database init */
     companion object {
         lateinit var database: DatabaseManager
@@ -34,11 +35,13 @@ class MainActivity : AppCompatActivity() {
         botIniciarSesion = findViewById(R.id.iniciarSesion)
         botIniciarSesion.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
+            this.finish()
         }
 
         botRegistrarse = findViewById(R.id.registrarse)
         botRegistrarse.setOnClickListener {
             startActivity(Intent(this, SignupActivity::class.java))
+            this.finish()
         }
     }
 }
