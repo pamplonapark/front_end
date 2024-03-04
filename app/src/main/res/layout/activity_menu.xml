@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="80dp">
+
+
+
+            <TextView
+                android:id="@+id/txt_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="MENU"
+                android:textAlignment="center"
+                android:textSize="35dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true">
+            <Button
+                android:id="@+id/btn_lista_parking"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:text="Lista parkings"/>
+
+            <Button
+                android:id="@+id/btn_favoritos"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:text="Favoritos"
+                android:layout_marginTop="36dp"/>
+
+            <Button
+                android:id="@+id/btn_salir"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:text="Salir"
+                android:layout_marginTop="36dp"/>
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/NOM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="PAMPLONAPARK"
+            android:textAlignment="center"
+            android:layout_below="@id/ll"
+            android:textSize="35dp"
+            android:layout_marginTop="50dp"
+            android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
