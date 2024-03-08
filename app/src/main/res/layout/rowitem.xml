@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/row_padding"
+    android:paddingLeft="@dimen/general_padding"
+    android:paddingRight="@dimen/general_padding"
+    android:paddingTop="@dimen/row_padding"
+    android:background="@drawable/rounded_border"
+    android:layout_marginTop="10sp">
+
+    <TextView
+        android:id="@+id/direccion"
+        android:text="Dirección"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:paddingStart="@dimen/text_row_padding_image"/>
+
+    <TextView
+        android:id="@+id/precio"
+        android:text="Precio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/direccion"
+        android:paddingStart="@dimen/text_row_padding_image"/>
+
+    <TextView
+        android:id="@+id/horario"
+        android:text="Horario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/direccion"
+        android:layout_toEndOf="@+id/precio"
+        android:layout_marginStart="30dp"/>
+
+    <ImageButton
+        android:id="@+id/favoritos"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/baseline_favorite_border_24"
+        android:layout_alignParentRight="true"
+        android:background="@android:color/transparent"
+        android:onClick="onFavoritosButtonClick"/>
+</RelativeLayout>

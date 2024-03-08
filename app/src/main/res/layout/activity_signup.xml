@@ -30,34 +30,24 @@
             android:layout_marginBottom="50dp"/>
 
         <EditText
-            android:id="@+id/editTextNombre"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:hint="Nombre completo"
-            android:inputType="text"
-            android:layout_below="@+id/signupText"
-            android:layout_marginBottom="20dp"/>
-
-        <EditText
             android:id="@+id/editTextEmail"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:hint="Correo electrónico"
             android:inputType="textEmailAddress"
-            android:layout_below="@+id/editTextNombre"
+            android:layout_below="@+id/signupText"
             android:layout_marginBottom="20dp"/>
 
         <EditText
             android:id="@+id/editTextPhone"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:hint="Número de teléfono"
-            android:inputType="phone"
             android:layout_below="@+id/editTextEmail"
-            android:layout_marginBottom="20dp"/>
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:hint="Usuario"
+            android:inputType="phone" />
 
         <EditText
             android:id="@+id/editTextPassword"
