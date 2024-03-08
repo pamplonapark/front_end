@@ -9,6 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pamplonapark.R
 
+/**
+ * Actividad que muestra una lista de elementos usando un RecyclerView.
+ */
 class SearchActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
@@ -17,6 +20,10 @@ class SearchActivity : AppCompatActivity() {
     var isImageChanged = false
     private lateinit var btnFavoritos : ImageButton
 
+    /**
+     * Método llamado cuando se crea la actividad.
+     * @param savedInstanceState Datos de estado previamente guardados.
+     */
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +40,10 @@ class SearchActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * Genera datos de ejemplo para la lista.
+     * @return Lista de objetos [RowItem].
+     */
     private fun generateDummyData(): List<RowItem> {
         // Implement this function to generate your data
         // Return a list of RowItem objects
