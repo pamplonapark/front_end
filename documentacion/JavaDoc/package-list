@@ -1,0 +1,10 @@
+$dokka.format:javadoc-v1
+$dokka.linkExtension:html
+$dokka.location:com.example.pamplonapark.database/DatabaseManager.Companion///PointingToDeclaration/com/example/pamplonapark/database/DatabaseManager.Companion.html
+com.example.pamplonapark
+com.example.pamplonapark.dao
+com.example.pamplonapark.dataModels
+com.example.pamplonapark.database
+com.example.pamplonapark.interfaces
+com.example.pamplonapark.internal_code
+

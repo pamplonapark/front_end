@@ -10,21 +10,32 @@ import com.example.pamplonapark.MainActivity
 import com.example.pamplonapark.R
 import com.example.pamplonapark.database.DatabaseManager
 
+/**
+ * Activity for user registration.
+ * This activity allows users to register in the application.
+ */
 class SignupActivity : AppCompatActivity() {
+
+    /**
+     * Method called when the activity is created.
+     * UI components are initialized.
+     *
+     * @param savedInstanceState Previous instance data if exists.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
-
-
     }
 
+    /**
+     * Method called when it's requested for the activity to finish.
+     * Redirects the user to the main activity after a brief delay.
+     */
     override fun finish() {
         startActivity(Intent(this, MainActivity::class.java))
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
             super.finish()
         }, 1500)
-
     }
-
 }
