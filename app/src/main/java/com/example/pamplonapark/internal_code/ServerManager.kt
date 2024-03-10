@@ -1,6 +1,7 @@
 package com.example.pamplonapark.internal_code
 
 import android.util.Log
+import com.example.pamplonapark.interfaces.adapters.items.ParkingItem
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -35,7 +36,7 @@ class ServerManager {
 
                             for (i in 0 until jsonArray.length()) {
                                 val parkingObject = jsonArray.getJSONObject(i)
-                                result.add(ParkingItem(parkingObject.getString("uuid"), parkingObject.getString("name")));
+                                //result.add(ParkingItem(parkingObject.getString("uuid"), parkingObject.getString("name")));
                             }
                             Log.i("Internal", "Parkings retrieved correctly");
                         }
