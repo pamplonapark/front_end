@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.View
 import androidx.room.Room
 import com.example.pamplonapark.MainActivity
 import com.example.pamplonapark.R
@@ -25,6 +26,13 @@ class SignupActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
+
+        /*Button navigation*/
+        val btnSignup = findViewById<View>(R.id.btnSignup)
+        btnSignup.setOnClickListener {
+            startActivity(Intent(this, SearchActivity::class.java))
+            this.finish()
+        }
     }
 
     /**

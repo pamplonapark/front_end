@@ -1,11 +1,14 @@
 package com.example.pamplonapark.interfaces
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.pamplonapark.MainActivity
 import com.example.pamplonapark.R
 import com.example.pamplonapark.interfaces.adapters.RowAdapter
 import com.example.pamplonapark.interfaces.adapters.items.ParkingItem
@@ -39,6 +42,19 @@ class SearchActivity : AppCompatActivity() {
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = rowAdapter
+
+        /*Button navigation*/
+        val btnReturn = findViewById<View>(R.id.volver)
+        btnReturn.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+            this.finish()
+        }
+
+        val btnFavoritos = findViewById<View>(R.id.favs)
+        btnReturn.setOnClickListener {
+            startActivity(Intent(this, FavoritoActivity::class.java))
+            this.finish()
+        }
 
     }
 

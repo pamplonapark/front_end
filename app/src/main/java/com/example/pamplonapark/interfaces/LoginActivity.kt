@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.View
 import android.widget.Button
 import androidx.room.Room
 import com.example.pamplonapark.MainActivity
@@ -27,6 +28,13 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        /*Button navigation*/
+        val btnConfirm = findViewById<View>(R.id.btnLogin)
+        btnConfirm.setOnClickListener {
+            startActivity(Intent(this, SearchActivity::class.java))
+            this.finish()
+        }
 
         botRegistrarse = findViewById(R.id.btnRegister)
         botRegistrarse.setOnClickListener {

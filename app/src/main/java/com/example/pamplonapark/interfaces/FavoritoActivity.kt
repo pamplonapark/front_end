@@ -1,12 +1,15 @@
 package com.example.pamplonapark.interfaces
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.MotionEvent
+import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import com.example.pamplonapark.MainActivity
 import com.example.pamplonapark.R
 
 /**
@@ -26,6 +29,14 @@ class FavoritoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favoritos)
+
+
+        /*Button navigation*/
+        val btnBack = findViewById<View>(R.id.icon_back)
+        btnBack.setOnClickListener {
+            startActivity(Intent(this, SearchActivity::class.java))
+            this.finish()
+        }
 
         editTextBuscar = findViewById(R.id.editTextBuscar)
 
