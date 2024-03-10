@@ -10,6 +10,7 @@ import androidx.room.Room
 import com.example.pamplonapark.database.DatabaseManager
 import com.example.pamplonapark.interfaces.LoginActivity
 import com.example.pamplonapark.interfaces.SignupActivity
+import com.example.pamplonapark.internal_code.ServerManager
 
 /**
  * The main activity of the PamplonaPark application.

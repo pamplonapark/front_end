@@ -1,13 +1,14 @@
 package com.example.pamplonapark.interfaces
+
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.View
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pamplonapark.R
+import com.example.pamplonapark.interfaces.adapters.RowAdapter
+import com.example.pamplonapark.interfaces.adapters.items.RowItem
 
 /**
  * Actividad que muestra una lista de elementos usando un RecyclerView.
