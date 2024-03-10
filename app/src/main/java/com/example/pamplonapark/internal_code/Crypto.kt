@@ -29,8 +29,7 @@ class Crypto
     {
         val messageDigest = MessageDigest.getInstance("SHA-256")
         val hashBytes = messageDigest.digest(password.toByteArray())
-    return null;
-    //return DatatypeConverter.printHexBinary(hashBytes).toLowerCase()
+        return DatatypeConverter.printHexBinary(hashBytes).toLowerCase()
     }
 
     fun encryptData(data: ByteArray, key: SecretKey): Pair<ByteArray, ByteArray> {
@@ -38,6 +37,7 @@ class Crypto
         cipher.init(Cipher.ENCRYPT_MODE, key)
         val iv = cipher.iv
         val encryptedData = cipher.doFinal(data)
+
         return Pair(iv, encryptedData)
     }
 

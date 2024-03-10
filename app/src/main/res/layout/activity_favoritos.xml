@@ -26,22 +26,8 @@
         android:text="Favoritos"
         android:textAlignment="center"
         android:textSize="35sp"
-        app:layout_constraintEnd_toStartOf="@+id/icon_profile"
         app:layout_constraintStart_toEndOf="@+id/icon_back"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/icon_profile"
-        android:layout_width="45dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="10dp"
-        android:src="@drawable/outline_account_circle_24"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_favoritos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/txt_favoritos"
-        app:layout_constraintVertical_bias="0.555" />
 
     <EditText
         android:id="@+id/editTextBuscar"
