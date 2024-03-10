@@ -23,45 +23,13 @@ class HttpRequests()
 
         if(response.statusCode == 200)
         {
-            Log.d("HttpRequests", "Petition accepted:\nCode:${response.statusCode}\nPetition info: ${response.request}\nResponse info: $response")
+            Log.d("HttpRequests", "Petition accepted:\nCode:${response.statusCode}\nPetition info: ${response.request}\nResponse info: ${response.jsonObject.toString()}")
             return response.text;
         } else Log.d("HttpRequests", "Petition denied:\n" +
                 "Code:${response.statusCode}\n" +
-                "Petition info: ${response.request}\n" +
-                "Response info: $response")
+                "Petition info: ${response.request.toString()}\n" +
+                "Response info: ${response.jsonObject.toString()}")
 
         return null;
-    }
-
-    /**
-     * Create a GET method to server
-     *
-     * @param url : URL to perform the request : String
-     * @param args : Arguments (data to append to request) : Map<String, String>
-     * @param headers : Headers of the request (auth, accepted data...) : Map<String, String?>
-     *
-     * @return JSONObject or NULL (if request fails)
-     * */
-    suspend fun get(url: String, args: Map<String, String>?, headers: Map<String, String?>) : String?
-    {
-        return withContext(Dispatchers.IO) {
-            val response : Response = khttp.get(url = url, headers = headers, data = args);
-
-            if (response.statusCode == 200) {
-                Log.d(
-                    "HttpRequests",
-                    "Petition accepted:\nCode: ${response.statusCode}\nPetition info: ${response.request.headers}\nResponse info: ${response.jsonObject}"
-                )
-
-                return@withContext response.text;
-            } else Log.d(
-                "HttpRequests", "Petition denied:\n" +
-                        "Code:${response.statusCode}\n" +
-                        "Petition info: ${response.request}\n" +
-                        "Response info: $response"
-            )
-
-            null;
-        }
     }
 }

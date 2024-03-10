@@ -20,6 +20,6 @@ class SearchActivity : AppCompatActivity()
         Log.d("test", "Activity created")
         /*val recycler: RecyclerView = findViewById(R.id.recicler)
         recycler.adapter = ParkingAdapter(ServerManager.importDataFromNeo4j())*/
-        ServerManager.importDataFromNeo4j()
+        ServerManager.getAllParkings()
     }
 }

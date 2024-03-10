@@ -5,60 +5,54 @@ import com.example.pamplonapark.interfaces.adapters.items.ParkingItem
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import org.json.JSONArray
+import org.json.JSONObject
 
 class ServerManager {
     companion object {
-        val requests : HttpRequests = HttpRequests();
-        fun importDataFromNeo4j(): List<ParkingItem> {
+        private val crypto : Crypto = Crypto()
+        private val requests : HttpRequests = HttpRequests();
+
+        fun getAllParkings() = runBlocking {
             val result: ArrayList<ParkingItem> = ArrayList();
 
-            CoroutineScope(Dispatchers.Main).launch {
+            CoroutineScope(Dispatchers.IO).launch {
                 val headers: LinkedHashMap<String, String> = LinkedHashMap();
                 val args: LinkedHashMap<String, String> = LinkedHashMap();
                 val result: ArrayList<ParkingItem> = ArrayList();
 
                 headers.put("accept", "application/json");
-                headers.put("Authorization", "1234");
+                args.put("auth", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1dWlkIjoiMDIxNjg1ZTgtZDg0OC0xMWVlLTkyODItZDg1ZWQzNWIxZThkIiwidXNlcm5hbWUiOiJ2ZXJhIiwiaWF0IjoxNzA5MzY2MzE4LCJleHAiOjI0NjY3NDg3MTh9.SG49TM3W5TskBLMmc9G3dHpRQKMUu-3-1TgNCzovSi8");
 
                 try {
-                    val data = requests.get("http://192.168.56.1:3000/parkings/v1/getAllParkings", args, headers)
-                    Log.d("test", data.toString());
+                    val data = requests.post("http://192.168.56.1:5000/parkings/getAll", args, headers)
                     if (data != null) {
-                        val jsonArray = JSONArray(data);
+                        var dataJSON = JSONObject(data);
 
-                        // Iterate over each node JSON object
-                        for (i in 0 until jsonArray.length()) {
-                            val nodeObject = jsonArray.getJSONObject(i)
+                        if(dataJSON.get("code") == 200) {
+                            val info = dataJSON.optString("info")
+                            val jsonArray = JSONArray(info)
 
-                            // Extract information from the node JSON object
-                            val fieldsArray = nodeObject.getJSONArray("_fields")
-                            val fieldsObject = fieldsArray.getJSONObject(0)
-                            val propertiesObject = fieldsObject.getJSONObject("properties")
-
-                            // Extract specific properties from the propertiesObject
-                            val name = propertiesObject.getString("name")
-                            val address = propertiesObject.getString("address")
-                            val availableSpots = propertiesObject.getString("available_spots")
-
-                            Log.d("test", name)
+                            for (i in 0 until jsonArray.length()) {
+                                val parkingObject = jsonArray.getJSONObject(i)
+                                result.add(ParkingItem(parkingObject.getString("uuid"), parkingObject.getString("name")));
+                            }
+                            Log.i("Internal", "Parkings retrieved correctly");
                         }
-                        /*for(i in 0 until dataParsed.length()) {
-                                val id = dataParsed.getJSONObject(i).getJSONArray("_fields")[0];
-                                val name = dataParsed.getJSONObject(i).getJSONArray("_fields")[0];
-
-                            Log.d("test-info", id.toString())
-                            Log.d("test-info", name.toString())
-                                //result.add(ParkingItem(id, name));
-                        }*/
+                        else return@launch;
                     }
-
                 } catch (e: Exception) {
-                    Log.d("test", e.toString());
+                    Log.d("HttpRequests", e.toString());
                 }
             }
 
-            return result;
+            return@runBlocking result;
+        }
+
+        fun registerUser(username: String, email : String, password: String)
+        {
+            //val password : String = crypto.parseToString(crypto.encryptPassword(password));
         }
     }
 }

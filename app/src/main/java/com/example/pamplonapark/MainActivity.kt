@@ -8,6 +8,7 @@ import androidx.room.Room
 import com.example.pamplonapark.database.DatabaseManager
 import com.example.pamplonapark.interfaces.LoginActivity
 import com.example.pamplonapark.interfaces.SignupActivity
+import com.example.pamplonapark.internal_code.ServerManager
 
 class MainActivity : AppCompatActivity() {
     private lateinit var botIniciarSesion: Button
@@ -25,6 +26,8 @@ class MainActivity : AppCompatActivity() {
             applicationContext,
             DatabaseManager::class.java, "pamplonapark_db"
         ).build();
+
+        ServerManager.getAllParkings();
 
 
         super.onCreate(savedInstanceState)
