@@ -1,7 +1,6 @@
 package com.example.pamplonapark.internal_code
 
 import android.util.Log
-import com.example.pamplonapark.interfaces.adapters.items.ParkingItem
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

@@ -1,39 +1,14 @@
 package com.example.pamplonapark.interfaces
-<<<<<<< HEAD
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.util.Log
-import com.example.pamplonapark.R
-import com.example.pamplonapark.internal_code.HttpRequests
-import com.example.pamplonapark.internal_code.ServerManager
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-
-class SearchActivity : AppCompatActivity()
-{
-    override fun onCreate(savedInstanceState: Bundle?)
-    {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_search)
-
-        Log.d("test", "Activity created")
-        /*val recycler: RecyclerView = findViewById(R.id.recicler)
-        recycler.adapter = ParkingAdapter(ServerManager.importDataFromNeo4j())*/
-        ServerManager.getAllParkings()
-    }
-}
-=======
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.View
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pamplonapark.R
+import com.example.pamplonapark.interfaces.adapters.RowAdapter
+import com.example.pamplonapark.interfaces.adapters.items.RowItem
 
 /**
  * Actividad que muestra una lista de elementos usando un RecyclerView.
@@ -86,4 +61,3 @@ class SearchActivity : AppCompatActivity() {
 
 
 }
->>>>>>> e3740b37ee9698d4bb3c2b03d0356eab5795dc51

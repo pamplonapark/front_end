@@ -40,14 +40,7 @@ class MainActivity : AppCompatActivity() {
         database = Room.databaseBuilder(
             applicationContext,
             DatabaseManager::class.java, "pamplonapark_db"
-<<<<<<< HEAD
         ).build();
-
-        ServerManager.getAllParkings();
-
-=======
-        ).build()
->>>>>>> e3740b37ee9698d4bb3c2b03d0356eab5795dc51
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

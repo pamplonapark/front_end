@@ -1,23 +1,21 @@
-package com.example.pamplonapark.interfaces
+package com.example.pamplonapark.interfaces.adapters
 
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pamplonapark.R
-import kotlin.math.absoluteValue
+import com.example.pamplonapark.interfaces.adapters.items.ParkingItem
+
 /**
  * Adaptador para el RecyclerView en la [RowActivity].
  * @param context Contexto de la aplicación.
  * @param dataList Lista de objetos [RowItem] que se mostrarán.
  */
-class RowAdapter(private val context: Context, private val dataList: List<RowItem>) :
+class RowAdapter(private val context: Context, private val dataList: List<ParkingItem>) :
     RecyclerView.Adapter<RowAdapter.RowViewHolder>() {
 
     /**
@@ -63,7 +61,7 @@ class RowAdapter(private val context: Context, private val dataList: List<RowIte
          * Vincula datos al [RowViewHolder].
          * @param rowItem Objeto [RowItem] para vincular.
          */
-        fun bind(rowItem: RowItem) {
+        fun bind(rowItem: ParkingItem) {
             titleTextView.text = rowItem.title
             subtitleTextView.text = rowItem.subtitle
             extraTextView.text = rowItem.extraText
@@ -84,6 +82,4 @@ class RowAdapter(private val context: Context, private val dataList: List<RowIte
         }
 
     }
-
-
 }

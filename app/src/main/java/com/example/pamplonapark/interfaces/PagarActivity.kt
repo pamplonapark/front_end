@@ -50,19 +50,6 @@ class PagarActivity : AppCompatActivity() {
     }
 
     fun pagar() {
-
-
         finish()
-    }
-    /**
-     * Method called when it's requested for the activity to finish.
-     * Redirects the user to the menu activity after a brief delay.
-     */
-    override fun finish() {
-        startActivity(Intent(this, MenuActivity::class.java))
-        val handler = Handler(Looper.getMainLooper())
-        handler.postDelayed({
-            super.finish()
-        }, 1500)
     }
 }

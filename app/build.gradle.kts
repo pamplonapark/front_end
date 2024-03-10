@@ -39,12 +39,12 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-}
 
-/* Configuración de Dokka */
-tasks.dokkaGfm.configure{
-    outputDirectory.set(file("../documentacion/Gfm"))
-    suppressInheritedMembers.set(true)
+    /* Configuración de Dokka */
+    tasks.dokkaGfm.configure{
+        outputDirectory.set(file("../documentacion/Gfm"))
+        suppressInheritedMembers.set(true)
+    }
 }
 
 dependencies {
