@@ -47,6 +47,12 @@ android {
     }
 }
 
+/* Configuración de Dokka */
+tasks.dokkaGfm.configure{
+    outputDirectory.set(file("../documentacion/Gfm"))
+    suppressInheritedMembers.set(true)
+}
+
 dependencies {
     /* ROOM DATABASE */
     implementation("androidx.room:room-runtime:2.6.1")
