@@ -10,6 +10,11 @@ import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
 import javax.crypto.spec.GCMParameterSpec
 
+
+/**
+* Clase para operaciones de cifrado.
+* Esta clase proporciona métodos para generar una clave AES y cifrar datos utilizando esta clave.
+*/
 class Crypto
 {
     private val key = "aes_key"

@@ -11,9 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+<<<<<<< HEAD
         tools:targetApi="31"
         android:usesCleartextTraffic="true">
         <!--.MainActivity-->
+=======
+        tools:targetApi="31">
+
+        <activity
+            android:name=".interfaces.UserInfoActivity"
+            android:exported="false" />
+>>>>>>> e3740b37ee9698d4bb3c2b03d0356eab5795dc51
         <activity
             android:name=".interfaces.SearchActivity"
             android:exported="true">
@@ -25,12 +33,25 @@
         </activity>
         <activity
             android:name=".interfaces.LoginActivity"
+<<<<<<< HEAD
             android:exported="true"/>
         <activity
             android:name=".interfaces.SignupActivity"
             android:exported="true"/>
         <!--<activity android:name=".interfaces.SearchActivity"
             android:exported="true"/>-->
+=======
+            android:exported="true"></activity>
+        <activity
+            android:name=".interfaces.SignupActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".interfaces.SearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".interfaces.MenuActivity"
+            android:exported="false" />
+>>>>>>> e3740b37ee9698d4bb3c2b03d0356eab5795dc51
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 

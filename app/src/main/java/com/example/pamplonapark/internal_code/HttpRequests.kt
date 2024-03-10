@@ -5,18 +5,29 @@ import khttp.responses.Response
 import org.json.JSONObject
 import kotlinx.coroutines.*
 
+<<<<<<< HEAD
 class HttpRequests()
 {
-    /**
-     * Create a POST method to server
-     *
-     * @param url : URL to perform the request : String
-     * @param args : Arguments (data to append to request) : Map<String, String>
-     * @param headers : Headers of the request (auth, accepted data...) : Map<String, String?>
-     *
-     * @return JSONObject or NULL (if request fails)
-     * */
+=======
+/**
+ * Utility class for making HTTP requests.
+ * This class provides methods for performing POST and GET requests to a server.
+ */
+class HttpRequests {
 
+>>>>>>> e3740b37ee9698d4bb3c2b03d0356eab5795dc51
+    /**
+     * Performs a POST request to the specified URL.
+     *
+     * @param url The URL to perform the request.
+     * @param args Arguments to append to the request.
+     * @param headers Headers of the request (e.g., authentication, accepted data).
+     * @return The response as a JSONObject, or null if the request fails.
+     */
+    fun post(url: String, args: Map<String, String>, headers: Map<String, String?>): JSONObject? {
+        val response: Response = khttp.post(url = url, headers = headers, json = args)
+
+<<<<<<< HEAD
     fun post(url : String, args : Map<String, String>, headers: Map<String, String?>) : String?
     {
         val response : Response = khttp.post(url = url, headers = headers, json = args);
@@ -31,5 +42,46 @@ class HttpRequests()
                 "Response info: ${response.jsonObject.toString()}")
 
         return null;
+=======
+        if (response.statusCode == 200) {
+            Log.i(
+                "HttpRequests",
+                "Request accepted:\nCode: ${response.statusCode}\nRequest info: ${response.request}\nResponse info: $response"
+            )
+            return response.jsonObject
+        } else {
+            Log.e(
+                "HttpRequests",
+                "Request denied:\nCode: ${response.statusCode}\nRequest info: ${response.request}\nResponse info: $response"
+            )
+        }
+        return null
+    }
+
+    /**
+     * Performs a GET request to the specified URL.
+     *
+     * @param url The URL to perform the request.
+     * @param args Arguments to append to the request.
+     * @param headers Headers of the request (e.g., authentication, accepted data).
+     * @return The response as a JSONObject, or null if the request fails.
+     */
+    fun get(url: String, args: Map<String, String>, headers: Map<String, String?>): JSONObject? {
+        val response: Response = khttp.get(url = url, headers = headers, data = args)
+
+        if (response.statusCode == 200) {
+            Log.i(
+                "HttpRequests",
+                "Request accepted:\nCode: ${response.statusCode}\nRequest info: ${response.request}\nResponse info: $response"
+            )
+            return response.jsonObject
+        } else {
+            Log.e(
+                "HttpRequests",
+                "Request denied:\nCode: ${response.statusCode}\nRequest info: ${response.request}\nResponse info: $response"
+            )
+        }
+        return null
+>>>>>>> e3740b37ee9698d4bb3c2b03d0356eab5795dc51
     }
 }
