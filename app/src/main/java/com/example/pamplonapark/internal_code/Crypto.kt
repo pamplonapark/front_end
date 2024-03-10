@@ -12,11 +12,7 @@ import javax.crypto.spec.GCMParameterSpec
 
 class Crypto
 {
-<<<<<<< Updated upstream
-    private val key = "aes_numeric_value"
-=======
     private val key = "aes_key"
->>>>>>> Stashed changes
 
     /**
      * Encryption of the data
