@@ -1,0 +1,52 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:com.example.pamplonapark.dao////PointingToDeclaration/app/com.example.pamplonapark.dao/index.html
+$dokka.location:com.example.pamplonapark.dao/UserDAO///PointingToDeclaration/app/com.example.pamplonapark.dao/-user-d-a-o/index.html
+$dokka.location:com.example.pamplonapark.dao/UserDAO/delete/#com.example.pamplonapark.dataModels.User/PointingToDeclaration/app/com.example.pamplonapark.dao/-user-d-a-o/delete.html
+$dokka.location:com.example.pamplonapark.dao/UserDAO/getUserByUsername/#kotlin.String/PointingToDeclaration/app/com.example.pamplonapark.dao/-user-d-a-o/get-user-by-username.html
+$dokka.location:com.example.pamplonapark.dao/UserDAO/insert/#com.example.pamplonapark.dataModels.User/PointingToDeclaration/app/com.example.pamplonapark.dao/-user-d-a-o/insert.html
+$dokka.location:com.example.pamplonapark.dao/UserDAO/update/#com.example.pamplonapark.dataModels.User/PointingToDeclaration/app/com.example.pamplonapark.dao/-user-d-a-o/update.html
+$dokka.location:com.example.pamplonapark.dataModels////PointingToDeclaration/app/com.example.pamplonapark.dataModels/index.html
+$dokka.location:com.example.pamplonapark.dataModels/User///PointingToDeclaration/app/com.example.pamplonapark.dataModels/-user/index.html
+$dokka.location:com.example.pamplonapark.dataModels/User/User/#kotlin.String#kotlin.String/PointingToDeclaration/app/com.example.pamplonapark.dataModels/-user/-user.html
+$dokka.location:com.example.pamplonapark.dataModels/User/token/#/PointingToDeclaration/app/com.example.pamplonapark.dataModels/-user/token.html
+$dokka.location:com.example.pamplonapark.dataModels/User/username/#/PointingToDeclaration/app/com.example.pamplonapark.dataModels/-user/username.html
+$dokka.location:com.example.pamplonapark.database////PointingToDeclaration/app/com.example.pamplonapark.database/index.html
+$dokka.location:com.example.pamplonapark.database/DatabaseManager.Companion///PointingToDeclaration/app/com.example.pamplonapark.database/-database-manager/-companion/index.html
+$dokka.location:com.example.pamplonapark.database/DatabaseManager.Companion/getInstance/#android.content.Context/PointingToDeclaration/app/com.example.pamplonapark.database/-database-manager/-companion/get-instance.html
+$dokka.location:com.example.pamplonapark.database/DatabaseManager///PointingToDeclaration/app/com.example.pamplonapark.database/-database-manager/index.html
+$dokka.location:com.example.pamplonapark.database/DatabaseManager/DatabaseManager/#/PointingToDeclaration/app/com.example.pamplonapark.database/-database-manager/-database-manager.html
+$dokka.location:com.example.pamplonapark.database/DatabaseManager/userDao/#/PointingToDeclaration/app/com.example.pamplonapark.database/-database-manager/user-dao.html
+$dokka.location:com.example.pamplonapark.interfaces////PointingToDeclaration/app/com.example.pamplonapark.interfaces/index.html
+$dokka.location:com.example.pamplonapark.interfaces/FavoritoActivity///PointingToDeclaration/app/com.example.pamplonapark.interfaces/-favorito-activity/index.html
+$dokka.location:com.example.pamplonapark.interfaces/FavoritoActivity/FavoritoActivity/#/PointingToDeclaration/app/com.example.pamplonapark.interfaces/-favorito-activity/-favorito-activity.html
+$dokka.location:com.example.pamplonapark.interfaces/LoginActivity///PointingToDeclaration/app/com.example.pamplonapark.interfaces/-login-activity/index.html
+$dokka.location:com.example.pamplonapark.interfaces/LoginActivity/LoginActivity/#/PointingToDeclaration/app/com.example.pamplonapark.interfaces/-login-activity/-login-activity.html
+$dokka.location:com.example.pamplonapark.interfaces/LoginActivity/finish/#/PointingToDeclaration/app/com.example.pamplonapark.interfaces/-login-activity/finish.html
+$dokka.location:com.example.pamplonapark.interfaces/SignupActivity///PointingToDeclaration/app/com.example.pamplonapark.interfaces/-signup-activity/index.html
+$dokka.location:com.example.pamplonapark.interfaces/SignupActivity/SignupActivity/#/PointingToDeclaration/app/com.example.pamplonapark.interfaces/-signup-activity/-signup-activity.html
+$dokka.location:com.example.pamplonapark.interfaces/SignupActivity/finish/#/PointingToDeclaration/app/com.example.pamplonapark.interfaces/-signup-activity/finish.html
+$dokka.location:com.example.pamplonapark.internal_code////PointingToDeclaration/app/com.example.pamplonapark.internal_code/index.html
+$dokka.location:com.example.pamplonapark.internal_code/Auth///PointingToDeclaration/app/com.example.pamplonapark.internal_code/-auth/index.html
+$dokka.location:com.example.pamplonapark.internal_code/Auth/Auth/#/PointingToDeclaration/app/com.example.pamplonapark.internal_code/-auth/-auth.html
+$dokka.location:com.example.pamplonapark.internal_code/Auth/authenticate/#kotlin.String#kotlin.String/PointingToDeclaration/app/com.example.pamplonapark.internal_code/-auth/authenticate.html
+$dokka.location:com.example.pamplonapark.internal_code/Crypto///PointingToDeclaration/app/com.example.pamplonapark.internal_code/-crypto/index.html
+$dokka.location:com.example.pamplonapark.internal_code/Crypto/Crypto/#/PointingToDeclaration/app/com.example.pamplonapark.internal_code/-crypto/-crypto.html
+$dokka.location:com.example.pamplonapark.internal_code/Crypto/encrypt/#kotlin.ByteArray/PointingToDeclaration/app/com.example.pamplonapark.internal_code/-crypto/encrypt.html
+$dokka.location:com.example.pamplonapark.internal_code/HttpRequests///PointingToDeclaration/app/com.example.pamplonapark.internal_code/-http-requests/index.html
+$dokka.location:com.example.pamplonapark.internal_code/HttpRequests/HttpRequests/#/PointingToDeclaration/app/com.example.pamplonapark.internal_code/-http-requests/-http-requests.html
+$dokka.location:com.example.pamplonapark.internal_code/HttpRequests/get/#kotlin.String#kotlin.collections.Map[kotlin.String,kotlin.String]#kotlin.collections.Map[kotlin.String,kotlin.String?]/PointingToDeclaration/app/com.example.pamplonapark.internal_code/-http-requests/get.html
+$dokka.location:com.example.pamplonapark.internal_code/HttpRequests/post/#kotlin.String#kotlin.collections.Map[kotlin.String,kotlin.String]#kotlin.collections.Map[kotlin.String,kotlin.String?]/PointingToDeclaration/app/com.example.pamplonapark.internal_code/-http-requests/post.html
+$dokka.location:com.example.pamplonapark////PointingToDeclaration/app/com.example.pamplonapark/index.html
+$dokka.location:com.example.pamplonapark/MainActivity.Companion///PointingToDeclaration/app/com.example.pamplonapark/-main-activity/-companion/index.html
+$dokka.location:com.example.pamplonapark/MainActivity.Companion/database/#/PointingToDeclaration/app/com.example.pamplonapark/-main-activity/-companion/database.html
+$dokka.location:com.example.pamplonapark/MainActivity///PointingToDeclaration/app/com.example.pamplonapark/-main-activity/index.html
+$dokka.location:com.example.pamplonapark/MainActivity/MainActivity/#/PointingToDeclaration/app/com.example.pamplonapark/-main-activity/-main-activity.html
+$dokka.location:com.example.pamplonapark/MainActivity/finish/#/PointingToDeclaration/app/com.example.pamplonapark/-main-activity/finish.html
+com.example.pamplonapark
+com.example.pamplonapark.dao
+com.example.pamplonapark.dataModels
+com.example.pamplonapark.database
+com.example.pamplonapark.interfaces
+com.example.pamplonapark.internal_code
+
