@@ -11,32 +11,6 @@ class Crypto
 {
     private val key = "aes_numeric_value"
 
-    init
-    {
-        generateAESKey()
-    }
-
-    /** Creation of the key (and inserting it in KeyStore)
-    *
-    * @return Key : Key generated or NULL if already generated
-    * */
-    private fun generateAESKey(): SecretKey?
-    {
-        if(this.getSecretKey() == null)
-        {
-            val keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore")
-            val keyGenParameterSpec = KeyGenParameterSpec.Builder(key, KeyProperties.PURPOSE_ENCRYPT)
-                .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
-                .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
-                .build()
-
-            keyGenerator.init(keyGenParameterSpec)
-            return keyGenerator.generateKey()
-        }
-
-        return null;
-    }
-
     /**
      * Encryption of the data
      *
