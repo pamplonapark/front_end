@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pamplonapark.R
 import com.example.pamplonapark.interfaces.adapters.RowAdapter
 import com.example.pamplonapark.interfaces.adapters.items.ParkingItem
+import com.example.pamplonapark.internal_code.ServerManager
 
 /**
  * Actividad que muestra una lista de elementos usando un RecyclerView.
@@ -30,7 +31,7 @@ class SearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
-        val dataList = generateDummyData() // Implement this function to generate your data
+        val dataList = generateData() // Implement this function to generate your data
 
         recyclerView = findViewById(R.id.recycler)
         rowAdapter = RowAdapter(this, dataList)
@@ -45,16 +46,11 @@ class SearchActivity : AppCompatActivity() {
      * Genera datos de ejemplo para la lista.
      * @return Lista de objetos [RowItem].
      */
-    private fun generateDummyData(): List<ParkingItem> {
+    private fun generateData(): List<ParkingItem> {
         // Implement this function to generate your data
         // Return a list of RowItem objects
 
-        val rows = mutableListOf<ParkingItem>()
-
-        // Agrega elementos a la lista según tus necesidades
-        rows.add(ParkingItem("Dirección 1", "Precio 1", "Horario 1", "clear"))
-        rows.add(ParkingItem("Dirección 2", "Precio 2", "Horario 2", "clear"))
-        rows.add(ParkingItem("Dirección 3", "Precio 3", "Horario 3", "clear"))
+        val rows = ServerManager.getAllParkings();
 
         return rows
     }
