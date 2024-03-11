@@ -29,7 +29,10 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        /*Button navigation*/
+        /*Button navigation
+        *btnConfirm debería chekear en la bd si el usuario existe y dirigirte a la activity SearchActivity con la lista de parkings
+        *botRegistrarse te lleva a la activity SignUpActivity gracias al metodo finish1() para registrarte*/
+
         val btnConfirm = findViewById<View>(R.id.btnLogin)
         btnConfirm.setOnClickListener {
             startActivity(Intent(this, SearchActivity::class.java))

@@ -43,7 +43,10 @@ class SearchActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = rowAdapter
 
-        /*Button navigation*/
+        /*Button navigation
+        * btnReturn vuelve hacia atrás a la ventana principal Main activity, para seleccionar login o sign up
+        * btnFavoritos te lleva a lista de parkings favoritos seleccionados */
+
         val btnReturn = findViewById<View>(R.id.volver)
         btnReturn.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))

@@ -31,7 +31,8 @@ class FavoritoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_favoritos)
 
 
-        /*Button navigation*/
+        /*Button navigation
+        * btnBack vuelve hacia atrás a la ventana de la lista de parkings Search activity */
         val btnBack = findViewById<View>(R.id.icon_back)
         btnBack.setOnClickListener {
             startActivity(Intent(this, SearchActivity::class.java))

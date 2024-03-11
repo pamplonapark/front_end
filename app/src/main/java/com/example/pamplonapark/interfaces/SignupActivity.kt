@@ -27,7 +27,8 @@ class SignupActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
 
-        /*Button navigation*/
+        /*Button navigation
+        * btnSignup debe llevarte a la lista de parkings despues de crear el usuario, SearchActivity*/
         val btnSignup = findViewById<View>(R.id.btnSignup)
         btnSignup.setOnClickListener {
             startActivity(Intent(this, SearchActivity::class.java))
