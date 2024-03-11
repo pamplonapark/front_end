@@ -25,11 +25,21 @@ class Crypto
      * @param password as ByteArray
      * @return ByteArray of data encrypted
      * */
-    fun encryptPassword(password: String): ByteArray?
-    {
+    fun encryptPassword(password: String): String {
         val messageDigest = MessageDigest.getInstance("SHA-256")
         val hashBytes = messageDigest.digest(password.toByteArray())
-        return DatatypeConverter.printHexBinary(hashBytes).toLowerCase()
+        return hashBytes.toHex()
+    }
+
+    fun ByteArray.toHex(): String {
+        val hexChars = "0123456789abcdef"
+        val result = StringBuilder(size * 2)
+        forEach {
+            val octet = it.toInt()
+            result.append(hexChars[octet shr 4 and 0x0f])
+            result.append(hexChars[octet and 0x0f])
+        }
+        return result.toString()
     }
 
     fun encryptData(data: ByteArray, key: SecretKey): Pair<ByteArray, ByteArray> {
