@@ -36,6 +36,7 @@
         <activity
             android:name=".interfaces.FavoritoActivity"
             android:exported="true" />
+
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 
