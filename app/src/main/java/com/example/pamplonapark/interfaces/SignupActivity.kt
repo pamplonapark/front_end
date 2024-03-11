@@ -58,16 +58,22 @@ class SignupActivity : AppCompatActivity() {
                             email.text.toString(),
                             password_encrypted
                         )
-                        if (success) {
+                        if (success.get("status") == true) {
                             Toast.makeText(
                                 this@SignupActivity,
                                 "Te has registrado correctamente",
                                 Toast.LENGTH_SHORT
                             ).show()
+                            val intent = Intent(this@SignupActivity, SearchActivity::class.java);
+                            intent.putExtra("username", username.text.toString());
+
+                            startActivity(intent)
+                            this@SignupActivity.finish()
                         } else {
                             Toast.makeText(
                                 this@SignupActivity,
-                                "Error al registrar el usuario",
+                                "No se pudo crear el usuario",
+                                //success.get("message").toString(),
                                 Toast.LENGTH_SHORT
                             ).show()
                         }

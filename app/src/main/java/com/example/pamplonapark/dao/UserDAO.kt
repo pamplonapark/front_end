@@ -20,8 +20,8 @@ interface UserDAO {
      * @param username The username of the user to be retrieved.
      * @return The found user or null if no user was found with the given username.
      */
-    @Query("SELECT * FROM Users WHERE username = :username")
-    fun getUserByUsername(username: String): User?
+    @Query("SELECT token FROM Users WHERE username = :username")
+    fun getTokenByUser(username: String): String
 
     /**
      * Inserts a new user into the database.

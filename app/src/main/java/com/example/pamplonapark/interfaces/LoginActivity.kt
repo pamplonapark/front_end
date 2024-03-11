@@ -14,6 +14,9 @@ import com.example.pamplonapark.R
 import com.example.pamplonapark.database.DatabaseManager
 import com.example.pamplonapark.internal_code.Crypto
 import com.example.pamplonapark.internal_code.ServerManager
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 /**
  * Login activity.
@@ -44,9 +47,32 @@ class LoginActivity : AppCompatActivity() {
             if(!isBlankOrEmpty(usuario.text.toString()) || !isBlankOrEmpty(contra.text.toString()))
             {
                 var password_encrypted = Crypto().encryptPassword(contra.text.toString());
-                ServerManager.loginUser(usuario.text.toString(), password_encrypted);
 
-                Toast.makeText(this, "Has iniciado sesión correctamente", Toast.LENGTH_SHORT).show()
+                CoroutineScope(Dispatchers.Main).launch {
+                    val success = ServerManager.loginUser(
+                        usuario.text.toString(),
+                        password_encrypted
+                    )
+                    if (success.get("status") == true) {
+                        Toast.makeText(
+                            this@LoginActivity,
+                            "Has iniciado sesión correctamente",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        val intent = Intent(this@LoginActivity, SearchActivity::class.java);
+                        intent.putExtra("username", usuario.text.toString());
+
+                        startActivity(intent)
+                        this@LoginActivity.finish()
+                    } else {
+                        Toast.makeText(
+                            this@LoginActivity,
+                            "No se ha podido iniciar sesión",
+                            //success.get("message").toString(),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
             }
             else
             {
