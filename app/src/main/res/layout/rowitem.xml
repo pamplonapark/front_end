@@ -2,7 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="120dp"
     android:orientation="vertical"
     android:paddingBottom="@dimen/row_padding"
     android:paddingLeft="@dimen/general_padding"
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/direccion"
         android:paddingStart="@dimen/text_row_padding_image"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="29dp"
         android:textSize="16dp"
         android:fontFamily="sans-serif-condensed"/>
 
@@ -42,7 +42,7 @@
         android:layout_toEndOf="@+id/precio"
         android:layout_marginStart="30dp"
         android:textSize="16dp"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="29dp"
         android:fontFamily="sans-serif-condensed"/>
 
     <ImageButton
