@@ -41,7 +41,6 @@ class SignupActivity : AppCompatActivity() {
      * Redirects the user to the main activity after a brief delay.
      */
     override fun finish() {
-        startActivity(Intent(this, MainActivity::class.java))
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
             super.finish()
