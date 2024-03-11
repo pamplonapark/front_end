@@ -15,7 +15,8 @@ class HttpRequests() {
      * @return The response as a JSONObject, or null if the request fails.
      */
     fun post(url: String, args: Map<String, String>, headers: Map<String, String?>): String? {
-        val response: Response = khttp.post(url = url, headers = headers, json = args);
+        val args_parsed = JSONObject(args)
+        val response: Response = khttp.post(url = url, headers = headers, json = args_parsed);
 
         if (response.statusCode == 200) {
             Log.d(

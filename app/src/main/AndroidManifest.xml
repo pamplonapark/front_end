@@ -33,6 +33,9 @@
         <activity
             android:name=".interfaces.SearchActivity"
             android:exported="true" />
+        <activity
+            android:name=".interfaces.FavoritoActivity"
+            android:exported="true" />
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 

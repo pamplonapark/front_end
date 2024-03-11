@@ -69,7 +69,7 @@ class ServerManager {
                 headers.put("accept", "application/json")
 
                 try {
-                    val data = requests.post("http://34.16.20.168:3000/accounts/register", args, headers)
+                    val data = requests.post("http://192.168.56.1:5000/accounts/register", args, headers)
                     if (data != null) {
                         val dataJSON = JSONObject(data)
 
