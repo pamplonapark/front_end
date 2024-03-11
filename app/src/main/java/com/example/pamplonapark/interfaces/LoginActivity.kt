@@ -6,10 +6,14 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.room.Room
 import com.example.pamplonapark.MainActivity
 import com.example.pamplonapark.R
 import com.example.pamplonapark.database.DatabaseManager
+import com.example.pamplonapark.internal_code.Crypto
+import com.example.pamplonapark.internal_code.ServerManager
 
 /**
  * Login activity.
@@ -17,6 +21,9 @@ import com.example.pamplonapark.database.DatabaseManager
  */
 class LoginActivity : AppCompatActivity() {
     private lateinit var botRegistrarse: Button
+    private lateinit var usuario : EditText
+    private lateinit var contra : EditText
+    private lateinit var btnRegister : Button
 
     /**
      * Method called when the activity is created.
@@ -28,33 +35,32 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        botRegistrarse = findViewById(R.id.btnRegister)
+        usuario = findViewById(R.id.usuario)
+        contra = findViewById(R.id.contra)
+        botRegistrarse = findViewById(R.id.btnLogin)
+        btnRegister = findViewById(R.id.btnRegister)
+
         botRegistrarse.setOnClickListener {
-            this.finish1()
+            if(!isBlankOrEmpty(usuario.text.toString()) || !isBlankOrEmpty(contra.text.toString()))
+            {
+                var password_encrypted = Crypto().encryptPassword(contra.text.toString());
+                ServerManager.loginUser(usuario.text.toString(), password_encrypted);
+
+                Toast.makeText(this, "Has iniciado sesión correctamente", Toast.LENGTH_SHORT).show()
+            }
+            else
+            {
+                Toast.makeText(this, "Rellena todos los campos por favor", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        btnRegister.setOnClickListener {
+            startActivity(Intent(this, SignupActivity::class.java))
+            this.finish()
         }
     }
 
-    /**
-     * Method called when it's requested for the activity to finish.
-     * Redirects the user to the main activity after a brief delay.
-     */
-    override fun finish() {
-        startActivity(Intent(this, MainActivity::class.java))
-        val handler = Handler(Looper.getMainLooper())
-        handler.postDelayed({
-            super.finish()
-        }, 1500)
-    }
-
-    /**
-     * Method to finish the current activity and open the signup activity.
-     * Used when the user clicks the "Register" button.
-     */
-    private fun finish1() {
-        startActivity(Intent(this, SignupActivity::class.java))
-        val handler = Handler(Looper.getMainLooper())
-        handler.postDelayed({
-            super.finish()
-        }, 1500)
+    fun isBlankOrEmpty(input: String): Boolean {
+        return input.isBlank() || input.isEmpty()
     }
 }
