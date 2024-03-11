@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/direccion"
         android:layout_toEndOf="@+id/precio"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="20dp"
         android:textSize="16dp"
         android:layout_marginTop="29dp"
         android:fontFamily="sans-serif-condensed"/>
