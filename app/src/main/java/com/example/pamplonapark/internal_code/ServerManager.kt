@@ -32,7 +32,7 @@ class ServerManager {
             CoroutineScope(Dispatchers.IO).launch {
 
             try {
-                val data = requests.post("http://192.168.56.1:3000/parkings/getAll", args, headers)
+                val data = requests.post("http://34.16.20.168:3000/parkings/getAll", args, headers)
                 if (data != null) {
                     val dataJSON = data
 
