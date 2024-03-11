@@ -63,8 +63,8 @@ class RowAdapter(private val context: Context, private val dataList: List<Parkin
          */
         fun bind(rowItem: ParkingItem) {
             titleTextView.text = rowItem.title
-            subtitleTextView.text = rowItem.subtitle
-            extraTextView.text = rowItem.extraText
+            subtitleTextView.text = "Horario (24h): " + rowItem.subtitle
+            extraTextView.text = "Plazas libres: " + rowItem.extraText
 
             button.setOnClickListener{
 

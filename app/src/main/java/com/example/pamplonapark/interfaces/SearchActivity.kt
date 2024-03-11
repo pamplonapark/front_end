@@ -1,18 +1,19 @@
 package com.example.pamplonapark.interfaces
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pamplonapark.MainActivity
 import com.example.pamplonapark.R
 import com.example.pamplonapark.interfaces.adapters.RowAdapter
 import com.example.pamplonapark.interfaces.adapters.items.ParkingItem
 import com.example.pamplonapark.internal_code.ServerManager
+import com.example.pamplonapark.internal_code.ServerManager.Companion.getAllParkings
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 /**
  * Actividad que muestra una lista de elementos usando un RecyclerView.
@@ -23,7 +24,7 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var rowAdapter: RowAdapter
 
     var isImageChanged = false
-    private lateinit var btnFavoritos : ImageButton
+    private lateinit var btnFavoritos: ImageButton
 
     /**
      * Método llamado cuando se crea la actividad.
@@ -34,45 +35,22 @@ class SearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
-        val dataList = generateData() // Implement this function to generate your data
+        // Llama a la función generateData dentro de una corrutina y espera a que finalice
+        GlobalScope.launch(Dispatchers.Main) {
+            val dataList = generateData()
+            setupRecyclerView(dataList)
+        }
+    }
 
+    private fun setupRecyclerView(dataList: List<ParkingItem>) {
         recyclerView = findViewById(R.id.recycler)
         rowAdapter = RowAdapter(this, dataList)
 
-
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = rowAdapter
-
-        /*Button navigation
-        * btnReturn vuelve hacia atrás a la ventana principal Main activity, para seleccionar login o sign up
-        * btnFavoritos te lleva a lista de parkings favoritos seleccionados */
-
-        val btnReturn = findViewById<View>(R.id.volver)
-        btnReturn.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
-            this.finish()
-        }
-
-        btnFavoritos = findViewById<View>(R.id.favs) as ImageButton
-        btnFavoritos.setOnClickListener {
-            startActivity(Intent(this, FavoritoActivity::class.java))
-            this.finish()
-        }
-
     }
 
-    /**
-     * Genera datos de ejemplo para la lista.
-     * @return Lista de objetos [RowItem].
-     */
-    private fun generateData(): List<ParkingItem> {
-        // Implement this function to generate your data
-        // Return a list of RowItem objects
-
-        val rows = ServerManager.getAllParkings();
-
-        return rows
+    private suspend fun generateData(): List<ParkingItem> {
+        return getAllParkings(intent.getStringExtra("username"))
     }
-
-
 }

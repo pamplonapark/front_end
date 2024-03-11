@@ -15,3 +15,5 @@ data class User(
     @PrimaryKey @ColumnInfo(name = "username") val username: String = "",
     @ColumnInfo(name = "token") val token: String,
 )
+
+

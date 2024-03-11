@@ -14,7 +14,7 @@ class HttpRequests() {
      * @param headers Headers of the request (e.g., authentication, accepted data).
      * @return The response as a JSONObject, or null if the request fails.
      */
-    fun post(url: String, args: Map<String, String>, headers: Map<String, String?>): String? {
+    fun post(url: String, args: JSONObject, headers: Map<String, String?>): JSONObject {
         val response: Response = khttp.post(url = url, headers = headers, json = args);
 
         if (response.statusCode == 200) {
@@ -22,7 +22,7 @@ class HttpRequests() {
                 "HttpRequests",
                 "Petition accepted:\nCode:${response.statusCode}\nPetition info: ${response.request}\nResponse info: ${response.jsonObject.toString()}"
             )
-            return response.text;
+            return response.jsonObject;
         } else Log.d(
             "HttpRequests", "Petition denied:\n" +
                     "Code:${response.statusCode}\n" +
@@ -30,6 +30,6 @@ class HttpRequests() {
                     "Response info: ${response.jsonObject.toString()}"
         )
 
-        return null;
+        return JSONObject();
     }
 }

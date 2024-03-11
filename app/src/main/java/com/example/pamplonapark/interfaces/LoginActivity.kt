@@ -5,19 +5,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.room.Room
 import com.example.pamplonapark.MainActivity
 import com.example.pamplonapark.R
-import com.example.pamplonapark.dao.UserDAO
-import com.example.pamplonapark.dataModels.User
 import com.example.pamplonapark.database.DatabaseManager
+import com.example.pamplonapark.internal_code.Crypto
+import com.example.pamplonapark.internal_code.ServerManager
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 /**
  * Login activity.
@@ -25,8 +24,9 @@ import kotlinx.coroutines.withContext
  */
 class LoginActivity : AppCompatActivity() {
     private lateinit var botRegistrarse: Button
-    private lateinit var usernameEditText: EditText
-    private lateinit var passwordEditText: EditText
+    private lateinit var usuario : EditText
+    private lateinit var contra : EditText
+    private lateinit var btnRegister : Button
 
     /**
      * Method called when the activity is created.
@@ -38,65 +38,55 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        usernameEditText = findViewById(R.id.usuario)
-        passwordEditText = findViewById(R.id.contra)
+        usuario = findViewById(R.id.usuario)
+        contra = findViewById(R.id.contra)
+        botRegistrarse = findViewById(R.id.btnLogin)
+        btnRegister = findViewById(R.id.btnRegister)
 
-        val btnConfirm = findViewById<View>(R.id.btnLogin)
-        btnConfirm.setOnClickListener {
-            login()
+        botRegistrarse.setOnClickListener {
+            if(!isBlankOrEmpty(usuario.text.toString()) || !isBlankOrEmpty(contra.text.toString()))
+            {
+                var password_encrypted = Crypto().encryptPassword(contra.text.toString());
+
+                CoroutineScope(Dispatchers.Main).launch {
+                    val success = ServerManager.loginUser(
+                        usuario.text.toString(),
+                        password_encrypted
+                    )
+                    if (success.get("status") == true) {
+                        Toast.makeText(
+                            this@LoginActivity,
+                            "Has iniciado sesión correctamente",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        val intent = Intent(this@LoginActivity, SearchActivity::class.java);
+                        intent.putExtra("username", usuario.text.toString());
+
+                        startActivity(intent)
+                        this@LoginActivity.finish()
+                    } else {
+                        Toast.makeText(
+                            this@LoginActivity,
+                            "No se ha podido iniciar sesión",
+                            //success.get("message").toString(),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
+            else
+            {
+                Toast.makeText(this, "Rellena todos los campos por favor", Toast.LENGTH_SHORT).show()
+            }
         }
 
-        botRegistrarse = findViewById(R.id.btnRegister)
-        botRegistrarse.setOnClickListener {
+        btnRegister.setOnClickListener {
             startActivity(Intent(this, SignupActivity::class.java))
             this.finish()
         }
     }
 
-    /**
-     * Method called when it's requested for the activity to finish.
-     * Redirects the user to the main activity after a brief delay.
-     */
-    override fun finish() {
-        val handler = Handler(Looper.getMainLooper())
-        handler.postDelayed({
-            super.finish()
-        }, 1500)
-    }
-
-    private fun login() {
-        val username = usernameEditText.text.toString()
-        val password = passwordEditText.text.toString()
-
-        if (username.isNotEmpty() && password.isNotEmpty()) {
-            // Obtener una instancia de la base de datos Room
-            val database = DatabaseManager.getInstance(this)
-
-            // Obtener el DAO de usuario
-            val userDAO: UserDAO = database.userDao()
-
-            GlobalScope.launch(Dispatchers.IO) {
-                // Buscar el usuario en la base de datos
-                val user = userDAO.getUserByUsername(username)
-
-                // Verificar si el usuario existe y si la contraseña coincide
-                if (user != null && user.token == password) {
-                    // Usuario autenticado, redirigir al MainActivity
-                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-                    finish()
-                } else {
-                    // Usuario no encontrado o contraseña incorrecta
-                    showToast("Usuario o contraseña incorrectos")
-                }
-            }
-        } else {
-            showToast("Por favor, ingrese su usuario y contraseña")
-        }
-    }
-
-    private fun showToast(message: String) {
-        GlobalScope.launch(Dispatchers.Main) {
-            Toast.makeText(this@LoginActivity, message, Toast.LENGTH_SHORT).show()
-        }
+    fun isBlankOrEmpty(input: String): Boolean {
+        return input.isBlank() || input.isEmpty()
     }
 }

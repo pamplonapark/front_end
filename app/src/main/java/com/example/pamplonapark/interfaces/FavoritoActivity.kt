@@ -1,15 +1,13 @@
 package com.example.pamplonapark.interfaces
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.MotionEvent
-import android.view.View
 import android.widget.EditText
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
-import com.example.pamplonapark.MainActivity
 import com.example.pamplonapark.R
 
 /**
@@ -19,6 +17,7 @@ import com.example.pamplonapark.R
 class FavoritoActivity : AppCompatActivity() {
 
     private lateinit var editTextBuscar: EditText
+    private lateinit var txt_favoritos : ImageButton
 
     /**
      * Method called when the activity is created.
@@ -30,16 +29,8 @@ class FavoritoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favoritos)
 
-
-        /*Button navigation
-        * btnBack vuelve hacia atrás a la ventana de la lista de parkings Search activity */
-        val btnBack = findViewById<View>(R.id.icon_back)
-        btnBack.setOnClickListener {
-            startActivity(Intent(this, SearchActivity::class.java))
-            this.finish()
-        }
-
         editTextBuscar = findViewById(R.id.editTextBuscar)
+        txt_favoritos = findViewById(R.id.txt_favoritos)
 
         // Add a TextWatcher to handle the EditText
         editTextBuscar.addTextChangedListener(object : TextWatcher {
@@ -84,6 +75,11 @@ class FavoritoActivity : AppCompatActivity() {
             }
             // Return false to indicate that the touch event was not handled
             return@setOnTouchListener false
+        }
+
+        txt_favoritos.setOnClickListener()
+        {
+            this.finish();
         }
     }
 }
