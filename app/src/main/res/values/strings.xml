@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">PamplonaPark</string>
-    <string name="registrarme">Registrarme</string>
+    <string name="registrarme">Registrarse</string>
+    <string name="login">Login</string>
+    <string name="password">Contraseña</string>
+    <string name="user">Usuario</string>
+    <string name="title">LOG IN</string>
 </resources>
