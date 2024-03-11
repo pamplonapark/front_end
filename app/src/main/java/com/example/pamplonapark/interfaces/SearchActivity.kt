@@ -10,6 +10,10 @@ import com.example.pamplonapark.R
 import com.example.pamplonapark.interfaces.adapters.RowAdapter
 import com.example.pamplonapark.interfaces.adapters.items.ParkingItem
 import com.example.pamplonapark.internal_code.ServerManager
+import com.example.pamplonapark.internal_code.ServerManager.Companion.getAllParkings
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 /**
  * Actividad que muestra una lista de elementos usando un RecyclerView.
@@ -31,29 +35,22 @@ class SearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
-        val dataList = generateData() // Implement this function to generate your data
+        // Llama a la función generateData dentro de una corrutina y espera a que finalice
+        GlobalScope.launch(Dispatchers.Main) {
+            val dataList = generateData()
+            setupRecyclerView(dataList)
+        }
+    }
 
+    private fun setupRecyclerView(dataList: List<ParkingItem>) {
         recyclerView = findViewById(R.id.recycler)
         rowAdapter = RowAdapter(this, dataList)
 
-
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = rowAdapter
-
     }
 
-    /**
-     * Genera datos de ejemplo para la lista.
-     * @return Lista de objetos [RowItem].
-     */
-    private fun generateData(): List<ParkingItem> {
-        // Implement this function to generate your data
-        // Return a list of RowItem objects
-
-        val rows = ServerManager.getAllParkings();
-
-        return rows
+    private suspend fun generateData(): List<ParkingItem> {
+        return getAllParkings()
     }
-
-
 }
