@@ -53,8 +53,8 @@ class SearchActivity : AppCompatActivity() {
             this.finish()
         }
 
-        val btnFavoritos = findViewById<View>(R.id.favs)
-        btnReturn.setOnClickListener {
+        btnFavoritos = findViewById<View>(R.id.favs) as ImageButton
+        btnFavoritos.setOnClickListener {
             startActivity(Intent(this, FavoritoActivity::class.java))
             this.finish()
         }
