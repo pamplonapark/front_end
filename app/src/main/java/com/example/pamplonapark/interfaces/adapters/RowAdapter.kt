@@ -15,7 +15,8 @@ import com.example.pamplonapark.interfaces.adapters.items.ParkingItem
  * @param context Contexto de la aplicación.
  * @param dataList Lista de objetos [RowItem] que se mostrarán.
  */
-class RowAdapter(private val context: Context, private val dataList: List<ParkingItem>) :
+class RowAdapter(private val context: Context, private val dataList: List<ParkingItem>,
+                 private val onItemClick: (ParkingItem) -> Unit) :
     RecyclerView.Adapter<RowAdapter.RowViewHolder>() {
 
     /**
@@ -28,6 +29,8 @@ class RowAdapter(private val context: Context, private val dataList: List<Parkin
         val view = LayoutInflater.from(context).inflate(R.layout.rowitem, parent, false)
         return RowViewHolder(view)
     }
+
+
     /**
      * Vincula los datos al [RowViewHolder].
      * @param holder [RowViewHolder] al que se vinculan los datos.
@@ -61,25 +64,27 @@ class RowAdapter(private val context: Context, private val dataList: List<Parkin
          * Vincula datos al [RowViewHolder].
          * @param rowItem Objeto [RowItem] para vincular.
          */
-        fun bind(rowItem: ParkingItem) {
-            titleTextView.text = rowItem.title
-            subtitleTextView.text = rowItem.subtitle
-            extraTextView.text = rowItem.extraText
+        fun bind(parkingItem: ParkingItem) {
+            titleTextView.text = parkingItem.title
+            subtitleTextView.text = parkingItem.subtitle
+            extraTextView.text = parkingItem.extraText
 
-            button.setOnClickListener{
+            // Configura el clic del botón para agregar o quitar el elemento de favoritos
+            button.setOnClickListener {
+                onItemClick(parkingItem)
+            }
 
                 // Compara con el drawable deseado (baseline_favorite_24)
-                if (rowItem.status == "fill"){
+                if (parkingItem.status == "fill"){
                     button.setImageResource(R.drawable.baseline_favorite_border_24)
-                    rowItem.status = "clear"
+                    parkingItem.status = "clear"
                 } else {
                     // Si el drawable actual no es baseline_favorite_24, cambia a baseline_favorite_24
                     button.setImageResource(R.drawable.baseline_favorite_24)
-                    rowItem.status = "fill"
+                    parkingItem.status = "fill"
                 }
 
             }
         }
 
     }
-}
