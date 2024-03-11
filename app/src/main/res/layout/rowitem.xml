@@ -2,7 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="80dp"
     android:orientation="vertical"
     android:paddingBottom="@dimen/row_padding"
     android:paddingLeft="@dimen/general_padding"
@@ -17,7 +17,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:paddingStart="@dimen/text_row_padding_image"/>
+        android:paddingStart="@dimen/text_row_padding_image"
+        android:textSize="16dp"
+        android:layout_marginTop="6dp"
+        android:fontFamily="sans-serif-condensed"/>
 
     <TextView
         android:id="@+id/precio"
@@ -25,7 +28,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/direccion"
-        android:paddingStart="@dimen/text_row_padding_image"/>
+        android:paddingStart="@dimen/text_row_padding_image"
+        android:layout_marginTop="9dp"
+        android:textSize="16dp"
+        android:fontFamily="sans-serif-condensed"/>
 
     <TextView
         android:id="@+id/horario"
@@ -34,14 +40,18 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/direccion"
         android:layout_toEndOf="@+id/precio"
-        android:layout_marginStart="30dp"/>
+        android:layout_marginStart="30dp"
+        android:textSize="16dp"
+        android:layout_marginTop="9dp"
+        android:fontFamily="sans-serif-condensed"/>
 
     <ImageButton
         android:id="@+id/favoritos"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
         android:src="@drawable/baseline_favorite_border_24"
         android:layout_alignParentRight="true"
         android:background="@android:color/transparent"
-        android:onClick="onFavoritosButtonClick"/>
+        android:onClick="onFavoritosButtonClick"
+        />
 </RelativeLayout>
