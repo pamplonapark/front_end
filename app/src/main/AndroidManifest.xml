@@ -23,9 +23,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".interfaces.UserInfoActivity"
-            android:exported="true" />
-        <activity
             android:name=".interfaces.LoginActivity"
             android:exported="true">
         </activity>
@@ -33,12 +30,6 @@
             android:name=".interfaces.SignupActivity"
             android:exported="true">
         </activity>
-        <activity
-            android:name=".interfaces.MenuActivity"
-            android:exported="true" />
-        <activity
-            android:name=".interfaces.PagarActivity"
-            android:exported="true" />
         <activity
             android:name=".interfaces.SearchActivity"
             android:exported="true" />
