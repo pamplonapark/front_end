@@ -24,7 +24,7 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var rowAdapter: RowAdapter
 
     var isImageChanged = false
-    private lateinit var btnFavoritos : ImageButton
+    private lateinit var btnFavoritos: ImageButton
 
     /**
      * Método llamado cuando se crea la actividad.
@@ -51,6 +51,6 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private suspend fun generateData(): List<ParkingItem> {
-        return getAllParkings()
+        return getAllParkings(intent.getStringExtra("username"))
     }
 }
