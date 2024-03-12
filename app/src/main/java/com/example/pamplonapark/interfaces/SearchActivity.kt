@@ -1,11 +1,13 @@
 package com.example.pamplonapark.interfaces
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.pamplonapark.MainActivity
 import com.example.pamplonapark.R
 import com.example.pamplonapark.interfaces.adapters.RowAdapter
 import com.example.pamplonapark.interfaces.adapters.items.ParkingItem
@@ -23,8 +25,8 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var rowAdapter: RowAdapter
 
-    var isImageChanged = false
     private lateinit var btnFavoritos: ImageButton
+    private lateinit var btnReturn: ImageButton
 
     /**
      * Método llamado cuando se crea la actividad.
@@ -39,6 +41,20 @@ class SearchActivity : AppCompatActivity() {
         GlobalScope.launch(Dispatchers.Main) {
             val dataList = generateData()
             setupRecyclerView(dataList)
+        }
+        btnFavoritos = findViewById(R.id.favs)
+        btnFavoritos.setOnClickListener {
+            val intent = Intent(this, FavoritoActivity::class.java);
+            intent.putExtra("username", intent.getStringExtra("username"))
+
+            startActivity(intent)
+            this.finish()
+        }
+
+        btnReturn = findViewById(R.id.volver)
+        btnReturn.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+            this.finish()
         }
     }
 

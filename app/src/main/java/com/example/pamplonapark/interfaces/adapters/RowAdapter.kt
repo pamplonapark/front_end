@@ -72,10 +72,12 @@ class RowAdapter(private val context: Context, private val dataList: List<Parkin
                 if (rowItem.status == "fill"){
                     button.setImageResource(R.drawable.baseline_favorite_border_24)
                     rowItem.status = "clear"
+                    //removeFav()
                 } else {
                     // Si el drawable actual no es baseline_favorite_24, cambia a baseline_favorite_24
                     button.setImageResource(R.drawable.baseline_favorite_24)
                     rowItem.status = "fill"
+                    //setFav();
                 }
 
             }
