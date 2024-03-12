@@ -11,6 +11,7 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.pamplonapark.MainActivity
 import com.example.pamplonapark.R
 import com.example.pamplonapark.interfaces.adapters.RowAdapter
 import com.example.pamplonapark.interfaces.adapters.items.ParkingItem
@@ -30,6 +31,7 @@ class FavoritoActivity : AppCompatActivity() {
     private lateinit var txt_favoritos : MaterialTextView
     private lateinit var recyclerView : RecyclerView
     private lateinit var rowAdapter: RowAdapter
+    private lateinit var btnReturn: ImageButton
 
     /**
      * Method called when the activity is created.
@@ -40,6 +42,15 @@ class FavoritoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favoritos)
+
+        btnReturn = findViewById(R.id.icon_back)
+        btnReturn.setOnClickListener {
+            val intent2 = Intent(this, SearchActivity::class.java);
+            intent2.putExtra("username", intent2.getStringExtra("username"))
+
+            startActivity(intent2)
+            this.finish()
+        }
 
         // Llama a la función generateData dentro de una corrutina y espera a que finalice
         GlobalScope.launch(Dispatchers.Main) {
