@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
+    <ImageButton
         android:id="@+id/icon_back"
         android:layout_width="45dp"
         android:layout_height="37dp"
