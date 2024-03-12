@@ -1,6 +1,7 @@
 package com.example.pamplonapark.interfaces
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -8,7 +9,16 @@ import android.view.MotionEvent
 import android.widget.EditText
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.pamplonapark.R
+import com.example.pamplonapark.interfaces.adapters.RowAdapter
+import com.example.pamplonapark.interfaces.adapters.items.ParkingItem
+import com.example.pamplonapark.internal_code.ServerManager
+import com.google.android.material.textview.MaterialTextView
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 /**
  * Activity to manage favorites.
@@ -17,7 +27,9 @@ import com.example.pamplonapark.R
 class FavoritoActivity : AppCompatActivity() {
 
     private lateinit var editTextBuscar: EditText
-    private lateinit var txt_favoritos : ImageButton
+    private lateinit var txt_favoritos : MaterialTextView
+    private lateinit var recyclerView : RecyclerView
+    private lateinit var rowAdapter: RowAdapter
 
     /**
      * Method called when the activity is created.
@@ -28,6 +40,12 @@ class FavoritoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favoritos)
+
+        // Llama a la función generateData dentro de una corrutina y espera a que finalice
+        GlobalScope.launch(Dispatchers.Main) {
+            val dataList = generateData()
+            setupRecyclerView(dataList)
+        }
 
         editTextBuscar = findViewById(R.id.editTextBuscar)
         txt_favoritos = findViewById(R.id.txt_favoritos)
@@ -77,9 +95,24 @@ class FavoritoActivity : AppCompatActivity() {
             return@setOnTouchListener false
         }
 
-        txt_favoritos.setOnClickListener()
-        {
+        txt_favoritos.setOnClickListener {
+            val intent = Intent(this, SearchActivity::class.java);
+            intent.putExtra("username", intent.getStringExtra("username"))
+
+            startActivity(intent)
             this.finish();
         }
+    }
+
+    private fun setupRecyclerView(dataList: List<ParkingItem>) {
+        recyclerView = findViewById(R.id.recyclerView)
+        rowAdapter = RowAdapter(this, dataList)
+
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = rowAdapter
+    }
+
+    private suspend fun generateData(): List<ParkingItem> {
+        return ServerManager.getFavorites(intent.getStringExtra("username"))
     }
 }

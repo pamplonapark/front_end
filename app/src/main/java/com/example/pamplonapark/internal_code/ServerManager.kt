@@ -171,5 +171,59 @@ class ServerManager {
             }.join()
             return success;
         }
+
+        suspend fun getFavorites(username: String?): List<ParkingItem> {
+            val result: ArrayList<ParkingItem> = ArrayList()
+
+            val headers: LinkedHashMap<String, String> = LinkedHashMap()
+            val args = JSONObject()
+
+            headers.put("accept", "application/json")
+
+            val token = withContext(Dispatchers.IO) {
+                MainActivity.database.userDao().getTokenByUser(username + "")
+            }
+            args.put("auth", token)
+
+            CoroutineScope(Dispatchers.IO).launch {
+
+                try {
+                    val data = requests.post("http://34.16.20.168:3000/accounts/getUserFavorites", args, headers)
+                    if (data != null) {
+                        val dataJSON = data
+
+                        if (dataJSON.get("code") == 200) {
+                            val info = dataJSON.optString("info")
+                            val jsonArray = JSONArray(info)
+
+                            withContext(Dispatchers.Main) {
+                                // Handle the result on the main thread
+
+                                for (i in 0 until jsonArray.length()) {
+                                    val parkingObject = jsonArray.getJSONObject(i)
+
+                                    result.add(
+                                        ParkingItem(
+                                            parkingObject.getString("address"),
+                                            parkingObject.getString("hours_active"),
+                                            parkingObject.getString("available_spots"),
+                                            "fill"
+                                        )
+                                    )
+                                }
+
+                                Log.d("Internal", result.toString())
+                                Log.i("Internal", "Parkings favs retrieved correctly")
+                                return@withContext result;
+                            }
+                        }
+                    }
+                } catch (e: Exception) {
+                    Log.d("HttpRequests", e.toString())
+                }
+            }.join();
+
+            return result
+        }
     }
 }

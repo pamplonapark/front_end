@@ -25,7 +25,6 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var rowAdapter: RowAdapter
 
-    var isImageChanged = false
     private lateinit var btnFavoritos: ImageButton
     private lateinit var btnReturn: ImageButton
 
@@ -45,7 +44,10 @@ class SearchActivity : AppCompatActivity() {
         }
         btnFavoritos = findViewById(R.id.favs)
         btnFavoritos.setOnClickListener {
-            startActivity(Intent(this, FavoritoActivity::class.java))
+            val intent = Intent(this, FavoritoActivity::class.java);
+            intent.putExtra("username", intent.getStringExtra("username"))
+
+            startActivity(intent)
             this.finish()
         }
 
