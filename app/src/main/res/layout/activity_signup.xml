@@ -7,7 +7,8 @@
     android:orientation="horizontal"
     android:theme="@style/AppTheme"
     android:visibility="visible"
-    tools:context=".interfaces.SignupActivity">
+    tools:context=".interfaces.SignupActivity"
+    android:id="@+id/signup_activity_layout" >
 
     <RelativeLayout
         android:layout_width="wrap_content"

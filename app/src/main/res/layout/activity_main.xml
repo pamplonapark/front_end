@@ -7,7 +7,8 @@
     android:orientation="horizontal"
     android:theme="@style/AppTheme"
     android:visibility="visible"
-    tools:context="com.example.pamplonapark.PrincipalActivity">
+    tools:context="com.example.pamplonapark.PrincipalActivity"
+    android:id="@+id/main" >
 
     <RelativeLayout
         android:layout_width="325dp"

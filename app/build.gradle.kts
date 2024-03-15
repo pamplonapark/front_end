@@ -41,14 +41,14 @@ android {
     }
 
     /* Configuración de Dokka */
-    tasks.dokkaGfm.configure{
+    tasks.dokkaGfm.configure {
         outputDirectory.set(file("../documentacion/Gfm"))
         suppressInheritedMembers.set(true)
     }
 }
 
 /* Configuración de Dokka */
-tasks.dokkaGfm.configure{
+tasks.dokkaGfm.configure {
     outputDirectory.set(file("../documentacion/Gfm"))
     suppressInheritedMembers.set(true)
 }
@@ -58,8 +58,29 @@ dependencies {
     implementation("androidx.room:room-runtime:2.6.1")
     kapt("androidx.room:room-compiler:2.6.1")
 
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("com.google.truth:truth:1.4.2")
+    testImplementation ("org.robolectric:robolectric:4.6.1")
+
+
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    androidTestImplementation("androidx.test:runner:1.5.2")
+    androidTestImplementation("androidx.test:core:1.5.0")
+
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
     /* HTTP Requests*/
     implementation("org.danilopianini:khttp:1.4.3")
+
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("com.google.truth:truth:1.4.2")
+
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    androidTestImplementation("androidx.test:runner:1.5.2")
+    androidTestImplementation("androidx.test:core:1.5.0")
+
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
 
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
@@ -72,4 +93,7 @@ dependencies {
 
     /* Dokka */
     dokkaPlugin("org.jetbrains.dokka:android-documentation-plugin:1.9.10")
+
+
+
 }

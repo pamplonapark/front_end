@@ -2,7 +2,7 @@ package com.example.pamplonapark
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
-
+import com.example.pamplonapark.database.DatabaseManager
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -21,4 +21,7 @@ class ExampleInstrumentedTest {
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("com.example.pamplonapark", appContext.packageName)
     }
+
+
+
 }
